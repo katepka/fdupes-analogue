@@ -123,12 +123,18 @@ public class HyperSQLHelper {
             String sql = "SELECT id, filename, filesize, lastmodified, pathto FROM FDUPESTABLE";
             ResultSet resultSet = statement.executeQuery(sql);
             
+            System.out.printf("\n%-5s| %-50s| %-10s| %-20s| %-260s|\n", 
+                    "id", "filename", "filesize", "lastmodified", "pathto");
+            System.out.println("-".repeat(355));
+            
             while (resultSet.next()) {
-                System.out.println(resultSet.getInt(1) + " "
-                        + resultSet.getString(2) + " " +
-                        resultSet.getString(3) + " " +
-                        resultSet.getString(4) + " " +
+                System.out.printf("%-5s| %-50s| %-10s| %-20s| %-260s%n",
+                        resultSet.getInt(1), 
+                        resultSet.getString(2), 
+                        resultSet.getString(3),
+                        resultSet.getString(4),
                         resultSet.getString(5));
+                System.out.println("-".repeat(355));
             }
 
         } catch (SQLException e) {
