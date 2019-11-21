@@ -50,8 +50,7 @@ public class HyperSQLHelper {
     public boolean getConnection() throws FileNotFoundException, IOException {
         Properties properties = new Properties();
 
-        try {
-            FileInputStream fis = new FileInputStream("src\\resources\\config.properties");
+        try (FileInputStream fis = new FileInputStream("src\\resources\\config.properties")) {
             properties.load(fis);
             String path = properties.getProperty("db.path");
             String dbname = properties.getProperty("db.dbname");
